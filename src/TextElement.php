@@ -3,6 +3,7 @@ namespace NeutronStars\Form;
 
 class TextElement implements FormElement
 {
+    protected string $type = 'text';
     protected ?string $value = null;
     protected string $key;
     protected ?string $id;
@@ -20,6 +21,12 @@ class TextElement implements FormElement
         $this->label = $label;
         $this->filters = $filters;
         $this->placeHolder = $placeHolder;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+        return $this;
     }
 
     public function getKey(): string
@@ -84,7 +91,7 @@ class TextElement implements FormElement
         if (!empty($this->error)) {
             $html .= '<span>'.$this->error.'</span>';
         }
-        $html .= '<input type="text" name="'.$this->key.'" placeholder="" value="'.$this->value.'"'
+        $html .= '<input type="'.$this->type.'" name="'.$this->key.'" placeholder="" value="'.$this->value.'"'
             .(!empty($this->id) ? ' id="'.$this->id.'"' : '').'/>';
         return $html;
     }

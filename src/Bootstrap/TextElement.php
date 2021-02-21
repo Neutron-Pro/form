@@ -14,7 +14,8 @@ class TextElement extends \NeutronStars\Form\TextElement
                 .'>'.$this->label.'</label>';
         }
 
-        $html .= '<input type="text" value="'.$this->value.'" class="form-control'.($error ? ' is-invalid' : '').'"'
+        $html .= '<input type="'.$this->type.'" value="'.$this->value.'" '
+            .'class="form-control'.($error ? ' is-invalid' : '').'"'
             .(!empty($this->id) ? ' id="'.$this->id.'"' : '')
             .' placeholder="'.$this->placeHolder.'"'
             .' name="'.$this->getKey().'">';
